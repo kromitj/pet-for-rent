@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171024002906) do
+ActiveRecord::Schema.define(version: 20171025202548) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,10 +19,58 @@ ActiveRecord::Schema.define(version: 20171024002906) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
+    t.string   "username"
     t.string   "password_digest"
     t.string   "password_digest_2"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+  end
+
+  create_table "animals", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "age_in_months"
+    t.string   "animal_type"
+    t.boolean  "is_declawed"
+    t.boolean  "is_spayed_neutered"
+    t.string   "gender"
+    t.float    "weight"
+    t.integer  "adoption_fee"
+    t.string   "description"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  create_table "employees", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "password_digest"
+    t.string   "username"
+    t.integer  "employee_type"
+    t.string   "home_address"
+    t.string   "phone_number"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "shelter_animals", force: :cascade do |t|
+    t.integer  "shelter_id"
+    t.integer  "animal_id"
+    t.date     "arrival_date"
+    t.date     "departure_date"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  create_table "shelters", force: :cascade do |t|
+    t.string   "name"
+    t.string   "address"
+    t.string   "phone_number"
+    t.string   "email"
+    t.string   "contact_first_name"
+    t.string   "contact_last_name"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
 end
